@@ -4,14 +4,22 @@ import com.arpiateclogia.interfaces.ICrud;
 import com.arpiateclogia.model.Cliente;
 import com.arpiateclogia.repository.ClienteRepository;
 
+import java.util.List;
+
 public class ClienteService implements ICrud {
 
-    private ClienteRepository repository = new ClienteRepository();
+    private final ClienteRepository repository = new ClienteRepository();
 
     @Override
     public void salvar(Cliente cliente) {
-        cliente.setId(1L);
+        Long idAutoIncrement = this.repository.getIdAutoIncrement();
+
+        cliente.setId(idAutoIncrement);
 
         this.repository.salvar(cliente);
+    }
+
+    public List<Cliente> findAll() {
+        return this.repository.findAll();
     }
 }

@@ -1,21 +1,23 @@
 package com.arpiateclogia;
 
 import com.arpiateclogia.exception.RegraDeNegocioException;
-import com.arpiateclogia.view.ClienteViewController;
+import com.arpiateclogia.view.CriarClienteViewController;
+import com.arpiateclogia.view.ListarClienteViewController;
 import com.arpiateclogia.view.MenuViewController;
 
 import java.util.Scanner;
 
 import static com.arpiateclogia.view.MenuViewController.MENU_CRIAR_CLIENTE;
+import static com.arpiateclogia.view.MenuViewController.MENU_LISTAR_CLIENTE;
 
 public class AppDesafio {
 
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     private static void executar() {
         var menuCtrl = new MenuViewController();
 
-        int opcaoMenu = 0;
+        var opcaoMenu = 0;
 
         do {
             menuCtrl.showMenu();
@@ -24,18 +26,26 @@ public class AppDesafio {
             switch (opcaoMenu) {
                 case MENU_CRIAR_CLIENTE:
 
-                    var clienteCtrl = new ClienteViewController();
-                    clienteCtrl.salvar(scanner);
+                    var criarClienteCtrl = new CriarClienteViewController();
+                    criarClienteCtrl.salvar(scanner);
+
+                    break;
+                case MENU_LISTAR_CLIENTE:
+
+                    var listarClienteCtrl = new ListarClienteViewController();
+                    listarClienteCtrl.showListCliente();
 
                     break;
                 default:
-                    messageGerenic("Opção do menu não encontrado!");
+
+                    messageGeneric("Opção do menu não encontrado!");
+
                     break;
             }
         } while (opcaoMenu != 5);
     }
 
-    private static void messageGerenic(String message) {
+    private static void messageGeneric(String message) {
         System.out.println("|____________________|Message|____________________|");
         System.out.println("|Exception: " + message);
         System.out.println("|_________________________________________________|\n");
@@ -45,9 +55,9 @@ public class AppDesafio {
         try {
             executar();
         } catch (RegraDeNegocioException ex) {
-            messageGerenic(ex.getMessage());
+            messageGeneric(ex.getMessage());
 
-            executar();
+            main(null);
         }
     }
 }

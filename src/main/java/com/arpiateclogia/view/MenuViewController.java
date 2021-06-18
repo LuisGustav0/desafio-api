@@ -10,6 +10,8 @@ public class MenuViewController {
 
     public static final int MENU_CRIAR_CLIENTE = 1;
 
+    public static final int MENU_LISTAR_CLIENTE = 3;
+
     public void showMenu() {
         System.out.println("|_________________________________________________|");
         System.out.println("|_____________________|MENU|______________________|");
@@ -17,7 +19,7 @@ public class MenuViewController {
         System.out.println("|__________________|Cliente:|_____________________|");
         System.out.println("|___________[1]Criar cliente______________________|");
         System.out.println("|___________[2]Alterar cliente____________________|");
-        System.out.println("|___________[3]Listar clientes____________________|");
+        System.out.println("|___________[3]Listar cliente_____________________|");
         System.out.println("|___________[4]Excluir cliente____________________|");
         System.out.println("|_________________________________________________|");
     }

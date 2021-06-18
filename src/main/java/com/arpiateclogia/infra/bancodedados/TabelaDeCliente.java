@@ -30,4 +30,8 @@ public class TabelaDeCliente implements ICrud {
     public void salvar(Cliente cliente) {
         this.getListClient().add(cliente);
     }
+
+    public List<Cliente> findAll() {
+        return this.getListClient();
+    }
 }
